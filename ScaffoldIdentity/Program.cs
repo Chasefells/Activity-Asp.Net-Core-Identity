@@ -24,6 +24,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();//added
+
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -33,6 +35,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+var endpoints = app.Services.GetRequiredService<EndpointRouteBuilder>();
+
+endpoints.MapRazorPages();//addd
 
 app.Run();
 //Which services are enabled?
