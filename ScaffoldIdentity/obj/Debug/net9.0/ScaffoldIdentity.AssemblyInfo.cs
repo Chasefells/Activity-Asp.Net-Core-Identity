@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScaffoldIdentity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e0afcc99fe45c4e8b9510f196478ccf1070a506")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbe3275883c18ae50c69a44bee8f582bb90b45c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScaffoldIdentity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScaffoldIdentity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

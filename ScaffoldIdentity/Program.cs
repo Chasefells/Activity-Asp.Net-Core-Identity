@@ -1,43 +1,37 @@
+using ScaffoldIdentity.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ScaffoldIdentity.Areas.Identity.Data;
+using Microsoft.AspNetCore.Routing;
+
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ScaffoldIdentityConnection") ?? throw new InvalidOperationException("Connection string 'ScaffoldIdentityConnection' not found.");;
 
-builder.Services.AddDbContext<ScaffoldIdentity>(options => options.UseSqlServer(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("ScaffoldIdentityConnection") ?? throw new InvalidOperationException("Connection string 'ScaffoldIdentityConnection' not found.");
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ScaffoldIdentity>();
+builder.Services.AddDbContext<ScaffoldIdentityDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
-// Add services to the container.
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+    options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ScaffoldIdentityDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseRouting();
 
-app.UseAuthentication();//added
-
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
-var endpoints = app.Services.GetRequiredService<EndpointRouteBuilder>();
-
-endpoints.MapRazorPages();//addd
+app.MapControllers();
+app.MapRazorPages();
 
 app.Run();
 //Which services are enabled?

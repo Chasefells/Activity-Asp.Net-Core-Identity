@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ScaffoldIdentity.Areas.Identity.Data;
 
-public class ScaffoldIdentity : IdentityDbContext<IdentityUser>
+public class ScaffoldIdentityDbContext : IdentityDbContext<IdentityUser>
 {
-    public ScaffoldIdentity(DbContextOptions<ScaffoldIdentity> options)
+    public ScaffoldIdentityDbContext(DbContextOptions<ScaffoldIdentityDbContext> options)
         : base(options)
     {
     }
