@@ -27,3 +27,12 @@ app.MapControllerRoute(
 
 
 app.Run();
+//Which services are enabled?
+//AddControllersWithViews(): This adds support for MVC controllers and views to the application.
+
+//Which endpoints are enabled?
+//MapControllerRoute(): This maps a route for MVC controllers, specifically the "default" route, which matches the pattern {controller=Home}/{action=Index}/{id?}.
+
+//Which packages were installed for the basic web application?
+//Microsoft.AspNetCore.Mvc: This package provides support for MVC controllers and views.
+//Microsoft.AspNetCore.StaticFiles: This package provides support for serving static files.
